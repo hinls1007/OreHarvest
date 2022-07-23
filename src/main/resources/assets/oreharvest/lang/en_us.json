@@ -1,0 +1,15 @@
+{
+  "itemGroup.oreharvest.general": "Ore Harvest",
+  "item.oreharvest.ore_crops_seed": "Ore Crops Seed",
+  "item.oreharvest.ring_basic": "Basic Ring",
+  "item.oreharvest.ring_nature": "Ring Of Nature",
+  "item.oreharvest.ring_attraction": "Ring Of Attraction",
+  "item.oreharvest.tool_hoe_nature": "Hoe Of Nature",
+  "item.tooltip.ore_crops_seed.1": "Place the seed on the ore",
+  "item.tooltip.ring_nature.1": "Growth crops in the fastest way",
+  "item.tooltip.ring_nature.2": "Activate in main hand",
+  "item.tooltip.ring_attraction": "Attract drops to your inventory",
+  "item.tooltip.tool_hoe_nature.1": "Growth crops in the fastest way",
+  "item.tooltip.tool_hoe_nature.2": "Activate in main hand",
+  "item.tooltip.tool_hoe_nature.3": "Harvest nearby crops when use"
+}

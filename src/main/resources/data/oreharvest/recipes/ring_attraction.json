@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " r ",
+    "rRr",
+    " r "
+  ],
+  "key": {
+    "R": {
+      "item": "oreharvest:ring_basic"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "oreharvest:ring_attraction",
+    "count": 1
+  }
+}

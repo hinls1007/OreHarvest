@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "oreharvest:block/ore_crops_block0"
+    },
+    "age=1": {
+      "model": "oreharvest:block/ore_crops_block1"
+    },
+    "age=2": {
+      "model": "oreharvest:block/ore_crops_block2"
+    },
+    "age=3": {
+      "model": "oreharvest:block/ore_crops_block3"
+    },
+    "age=4": {
+      "model": "oreharvest:block/ore_crops_block4"
+    },
+    "age=5": {
+      "model": "oreharvest:block/ore_crops_block5"
+    },
+    "age=6": {
+      "model": "oreharvest:block/ore_crops_block6"
+    },
+    "age=7": {
+      "model": "oreharvest:block/ore_crops_block7"
+    }
+  }
+}

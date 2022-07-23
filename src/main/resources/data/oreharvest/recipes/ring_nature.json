@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "SRS",
+    " S "
+  ],
+  "key": {
+    "R": {
+      "item": "oreharvest:ring_basic"
+    },
+    "S": {
+      "item": "oreharvest:ore_crops_seed"
+    }
+  },
+  "result": {
+    "item": "oreharvest:ring_nature",
+    "count": 1
+  }
+}

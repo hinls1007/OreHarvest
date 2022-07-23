@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "oreharvest:block/ore_crops_block7"
+  }
+}

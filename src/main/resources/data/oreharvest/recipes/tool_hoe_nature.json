@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " IR",
+    " I ",
+    "I  "
+  ],
+  "key": {
+    "R": {
+      "item": "oreharvest:ring_nature"
+    },
+    "I": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "oreharvest:tool_hoe_nature",
+    "count": 1
+  }
+}
