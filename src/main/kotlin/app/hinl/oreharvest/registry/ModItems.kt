@@ -4,8 +4,8 @@ import app.hinl.oreharvest.Constants
 import app.hinl.oreharvest.OreHarvest
 import app.hinl.oreharvest.item.rings.BasicRing
 import app.hinl.oreharvest.item.rings.RingOfAttraction
-import app.hinl.oreharvest.item.rings.RingOfNature
-import app.hinl.oreharvest.item.tools.HoeOfNature
+import app.hinl.oreharvest.item.rings.RingOfNatural
+import app.hinl.oreharvest.item.tools.HoeOfNatural
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.client.item.TooltipContext
 import net.minecraft.item.AliasedBlockItem
@@ -35,18 +35,18 @@ object ModItems {
     }
 
     val basicRing = BasicRing(FabricItemSettings().group(OreHarvest.itemGroup))
-    val ringOfNature = RingOfNature(FabricItemSettings().group(OreHarvest.itemGroup))
+    val ringOfNatural = RingOfNatural(FabricItemSettings().group(OreHarvest.itemGroup))
     val ringOfAttraction = RingOfAttraction(FabricItemSettings().group(OreHarvest.itemGroup))
 
-    val hoeOfNature = HoeOfNature(FabricItemSettings().group(OreHarvest.itemGroup))
+    val hoeOfNatural = HoeOfNatural(FabricItemSettings().group(OreHarvest.itemGroup))
 
     fun register() {
         Registry.register(Registry.ITEM, Identifier(Constants.ModID, "ore_crops_seed"), oreCropsSeed)
 
         Registry.register(Registry.ITEM, Identifier(Constants.ModID, "ring_basic"), basicRing)
-        Registry.register(Registry.ITEM, Identifier(Constants.ModID, "ring_nature"), ringOfNature)
+        Registry.register(Registry.ITEM, Identifier(Constants.ModID, "ring_natural"), ringOfNatural)
         Registry.register(Registry.ITEM, Identifier(Constants.ModID, "ring_attraction"), ringOfAttraction)
 
-        Registry.register(Registry.ITEM, Identifier(Constants.ModID, "tool_hoe_nature"), hoeOfNature)
+        Registry.register(Registry.ITEM, Identifier(Constants.ModID, "tool_hoe_natural"), hoeOfNatural)
     }
 }

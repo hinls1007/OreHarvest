@@ -10,7 +10,7 @@ import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 import net.minecraft.world.World
 
-class RingOfNature(settings: Settings?) : Item(settings) {
+class RingOfNatural(settings: Settings?) : Item(settings) {
     override fun appendTooltip(
         stack: ItemStack?,
         world: World?,
@@ -18,8 +18,8 @@ class RingOfNature(settings: Settings?) : Item(settings) {
         context: TooltipContext?
     ) {
         tooltip?.apply {
-            add(Text.translatable("item.tooltip.ring_nature.1").formatted(Formatting.DARK_GREEN))
-            add(Text.translatable("item.tooltip.ring_nature.2").formatted(Formatting.DARK_BLUE))
+            add(Text.translatable("item.tooltip.ring_natural.1").formatted(Formatting.DARK_GREEN))
+            add(Text.translatable("item.tooltip.ring_natural.2").formatted(Formatting.DARK_BLUE))
         }
     }
 

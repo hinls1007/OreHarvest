@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "oreharvest:items/tool_hoe_nature"
+    "layer0": "oreharvest:items/ring_natural"
   }
 }

@@ -12,7 +12,7 @@ import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
-class HoeOfNature(settings: Settings?) : Item(settings) {
+class HoeOfNatural(settings: Settings?) : Item(settings) {
     override fun appendTooltip(
         stack: ItemStack?,
         world: World?,
@@ -20,9 +20,9 @@ class HoeOfNature(settings: Settings?) : Item(settings) {
         context: TooltipContext?
     ) {
         tooltip?.apply {
-            add(Text.translatable("item.tooltip.tool_hoe_nature.1").formatted(Formatting.DARK_GREEN))
-            add(Text.translatable("item.tooltip.tool_hoe_nature.2").formatted(Formatting.DARK_BLUE))
-            add(Text.translatable("item.tooltip.tool_hoe_nature.3").formatted(Formatting.DARK_BLUE))
+            add(Text.translatable("item.tooltip.tool_hoe_natural.1").formatted(Formatting.DARK_GREEN))
+            add(Text.translatable("item.tooltip.tool_hoe_natural.2").formatted(Formatting.DARK_BLUE))
+            add(Text.translatable("item.tooltip.tool_hoe_natural.3").formatted(Formatting.DARK_BLUE))
         }
     }
 

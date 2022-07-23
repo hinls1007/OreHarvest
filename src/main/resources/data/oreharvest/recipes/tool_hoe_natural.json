@@ -7,14 +7,14 @@
   ],
   "key": {
     "R": {
-      "item": "oreharvest:ring_nature"
+      "item": "oreharvest:ring_natural"
     },
     "I": {
       "item": "minecraft:iron_block"
     }
   },
   "result": {
-    "item": "oreharvest:tool_hoe_nature",
+    "item": "oreharvest:tool_hoe_natural",
     "count": 1
   }
 }
