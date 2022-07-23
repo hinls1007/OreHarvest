@@ -1,4 +1,4 @@
-#Ore Harvest
+# Ore Harvest
 
 This is a minecraft mod that allow you growth ore crops by placing ore crops seed on the top of different ore
 
