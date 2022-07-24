@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "oreharvest",
-  "version": "1",
+  "version": "1.0.1",
   "name": "Ore Harvest",
-  "description": "Mod Description",
+  "description": "A minecraft mod that allow you growth ore crops",
   "authors": [
     "HinL"
   ],
@@ -30,9 +30,9 @@
   "mixins": [
   ],
   "depends": {
-    "fabricloader": ">=0.14.1",
+    "fabricloader": ">=0.14.8",
     "fabric": "*",
-    "fabric-language-kotlin": ">=1.7.4+kotlin.1.6.21",
+    "fabric-language-kotlin": ">=1.8.2+kotlin.1.7.10",
     "minecraft": "1.19.x",
     "java": ">=17"
   }

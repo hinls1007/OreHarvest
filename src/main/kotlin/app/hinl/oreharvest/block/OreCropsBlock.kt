@@ -45,6 +45,7 @@ class OreCropsBlock(settings: Settings?) : CropBlock(settings) {
         if (currentAge == maxAge) {
             val lowerBlockState = world?.getBlockState(pos?.mutableCopy()?.down())
             val dropCount = (world?.random?.nextInt(4) ?: 0) + 1
+            Block.dropStack(world, pos, ItemStack(ModItems.oreCropsSeed))
             Block.dropStack(world, pos, ItemStack(lowerBlockState?.block, dropCount))
         } else {
             Block.dropStack(world, pos, ItemStack(ModItems.oreCropsSeed))
