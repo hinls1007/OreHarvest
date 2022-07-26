@@ -11,54 +11,51 @@ import net.minecraft.util.math.Direction
 import net.minecraft.world.World
 
 object BlockActionHelper {
-    fun applyGrowth(world: World, player: PlayerEntity, radius: Int, interval: Int) {
-        val playerPosition = BlockPos(player.pos)
-        if (player.age % interval == 0) {
-            BlockPos.iterateOutwards(playerPosition, radius, 1, radius).forEach { blockPos ->
-                val blockState = world.getBlockState(blockPos)
-                val block = blockState.block
-                if (block is Fertilizable
-                    && block !is CaveVinesBodyBlock
-                    && block !is CaveVinesHeadBlock
-                    && block !is FernBlock
-                    && block !is GrassBlock
-                    && block !is MangroveLeavesBlock
-                    && block !is MossBlock
-                    && block !is NyliumBlock
-                    && block !is RootedDirtBlock
-                    && block !is TallFlowerBlock
-                    && block !is TwistingVinesBlock
-                    && block !is TwistingVinesPlantBlock
-                    && block !is WeepingVinesBlock
-                    && block !is WeepingVinesPlantBlock
-                ) {
-                    if (block.canGrow(world, world.random, blockPos, blockState)) {
-                        block.grow(world as? ServerWorld, world.random, blockPos, blockState)
-                        when (block) {
-                            is StemBlock -> {
-                                if (blockState.get(StemBlock.AGE) >= StemBlock.MAX_AGE) {
-                                    val direction = Direction.Type.HORIZONTAL.random(world.random)
-                                    val targetBlockPos: BlockPos = blockPos.offset(direction)
-                                    val targetBlockState = world.getBlockState(targetBlockPos.down())
-                                    if (world.getBlockState(targetBlockPos).isAir && (targetBlockState.isOf(Blocks.FARMLAND) || targetBlockState.isIn(
-                                            BlockTags.DIRT
-                                        ))
-                                    ) {
-                                        world.setBlockState(targetBlockPos, block.gourdBlock.defaultState)
-                                        world.setBlockState(
-                                            blockPos,
-                                            block.gourdBlock.attachedStem.defaultState
-                                                .with(
-                                                    HorizontalFacingBlock.FACING,
-                                                    direction
-                                                ) as BlockState
-                                        )
-                                    }
+    fun applyGrowth(world: World, pos: BlockPos, radius: Int) {
+        BlockPos.iterateOutwards(pos, radius, 1, radius).forEach { blockPos ->
+            val blockState = world.getBlockState(blockPos)
+            val block = blockState.block
+            if (block is Fertilizable
+                && block !is CaveVinesBodyBlock
+                && block !is CaveVinesHeadBlock
+                && block !is FernBlock
+                && block !is GrassBlock
+                && block !is MangroveLeavesBlock
+                && block !is MossBlock
+                && block !is NyliumBlock
+                && block !is RootedDirtBlock
+                && block !is TallFlowerBlock
+                && block !is TwistingVinesBlock
+                && block !is TwistingVinesPlantBlock
+                && block !is WeepingVinesBlock
+                && block !is WeepingVinesPlantBlock
+            ) {
+                if (block.canGrow(world, world.random, blockPos, blockState)) {
+                    block.grow(world as? ServerWorld, world.random, blockPos, blockState)
+                    when (block) {
+                        is StemBlock -> {
+                            if (blockState.get(StemBlock.AGE) >= StemBlock.MAX_AGE) {
+                                val direction = Direction.Type.HORIZONTAL.random(world.random)
+                                val targetBlockPos: BlockPos = blockPos.offset(direction)
+                                val targetBlockState = world.getBlockState(targetBlockPos.down())
+                                if (world.getBlockState(targetBlockPos).isAir && (targetBlockState.isOf(Blocks.FARMLAND) || targetBlockState.isIn(
+                                        BlockTags.DIRT
+                                    ))
+                                ) {
+                                    world.setBlockState(targetBlockPos, block.gourdBlock.defaultState)
+                                    world.setBlockState(
+                                        blockPos,
+                                        block.gourdBlock.attachedStem.defaultState
+                                            .with(
+                                                HorizontalFacingBlock.FACING,
+                                                direction
+                                            ) as BlockState
+                                    )
                                 }
                             }
-                            else -> {
+                        }
+                        else -> {
 
-                            }
                         }
                     }
                 }
@@ -66,10 +63,8 @@ object BlockActionHelper {
         }
     }
 
-    fun applyBreakCrops(world: World, player: PlayerEntity, radius: Int) {
-        val playerPosition = BlockPos(player.pos)
-
-        BlockPos.iterateOutwards(playerPosition, radius, 1, radius).forEach { blockPos ->
+    fun applyBreakCrops(world: World, pos: BlockPos, radius: Int) {
+        BlockPos.iterateOutwards(pos, radius, 1, radius).forEach { blockPos ->
             val blockState = world.getBlockState(blockPos)
             val block = blockState.block
             val defaultState = block.defaultState

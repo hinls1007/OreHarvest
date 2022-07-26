@@ -8,6 +8,7 @@ import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
+import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 class RingOfNatural(settings: Settings?) : Item(settings) {
@@ -30,12 +31,13 @@ class RingOfNatural(settings: Settings?) : Item(settings) {
 
         val equippedMain = entity.mainHandStack
         if (stack == equippedMain) {
-            BlockActionHelper.applyGrowth(
-                world = world,
-                player = entity,
-                10,
-                20
-            )
+            if (entity.age % 20 == 0) {
+                BlockActionHelper.applyGrowth(
+                    world = world,
+                    pos = BlockPos(entity.pos),
+                    10
+                )
+            }
         }
     }
 }
