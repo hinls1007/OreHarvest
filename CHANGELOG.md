@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 ### Fixed
 
-## [Unreleased] - 2022-07-28
+## [1.0.3] - 2022-07-28
 ### Added
 
 - Chest of Attraction
