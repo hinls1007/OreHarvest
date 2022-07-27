@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"RRR",
+		"RCR",
+		"RRR"
+	],
+	"key": {
+		"R": {
+			"item": "oreharvest:ring_natural"
+		},
+		"C": {
+			"item": "minecraft:chest"
+		}
+	},
+	"result": {
+		"item": "oreharvest:chest_natural",
+		"count": 1
+	}
+}

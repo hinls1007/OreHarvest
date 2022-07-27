@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "oreharvest:block/chest_natural"
+    },
+    "facing=south": {
+      "model": "oreharvest:block/chest_natural",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "oreharvest:block/chest_natural",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "oreharvest:block/chest_natural",
+      "y": 90
+    },
+    "facing=up": {
+      "model": "oreharvest:block/chest_natural",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "oreharvest:block/chest_natural",
+      "x": 90
+    }
+  }
+}

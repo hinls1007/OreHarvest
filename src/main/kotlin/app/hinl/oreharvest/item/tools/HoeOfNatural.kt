@@ -10,6 +10,7 @@ import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
+import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 class HoeOfNatural(settings: Settings?) : Item(settings) {
@@ -32,12 +33,13 @@ class HoeOfNatural(settings: Settings?) : Item(settings) {
         }
         val equippedMain = entity.mainHandStack
         if (stack == equippedMain) {
-            BlockActionHelper.applyGrowth(
-                world = world,
-                player = entity,
-                10,
-                20
-            )
+            if (entity.age % 20 == 0) {
+                BlockActionHelper.applyGrowth(
+                    world = world,
+                    pos = BlockPos(entity.pos),
+                    10
+                )
+            }
         }
     }
 
@@ -45,7 +47,7 @@ class HoeOfNatural(settings: Settings?) : Item(settings) {
         user ?: return TypedActionResult.pass(null)
         val itemStack: ItemStack = user.getStackInHand(hand)
         world ?: return TypedActionResult.pass(itemStack)
-        BlockActionHelper.applyBreakCrops(world = world, player = user, 10)
+        BlockActionHelper.applyBreakCrops(world = world, pos = BlockPos(user.pos), 10)
         return TypedActionResult.success(itemStack, true)
     }
 }
