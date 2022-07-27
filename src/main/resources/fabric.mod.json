@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "oreharvest",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "name": "Ore Harvest",
   "description": "A minecraft mod that allow you growth ore crops",
   "authors": [
