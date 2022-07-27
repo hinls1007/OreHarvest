@@ -12,6 +12,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 ### Fixed
 
+## [Unreleased] - 2022-07-28
+### Added
+
+- Chest of Attraction
+- Chest of Natural
+
+### Changed
+### Fixed
+
+## [1.0.2] - 2022-07-24
+### CurseForge Update issue
+
 ## [1.0.1] - 2022-07-23
 ### Added
 * Changelog
