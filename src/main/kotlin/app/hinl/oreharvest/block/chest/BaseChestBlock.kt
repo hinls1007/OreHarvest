@@ -1,17 +1,19 @@
 package app.hinl.oreharvest.block.chest
 
 import app.hinl.oreharvest.blockentity.chest.BaseChestEntity
-import net.minecraft.block.BlockRenderType
-import net.minecraft.block.BlockState
-import net.minecraft.block.BlockWithEntity
-import net.minecraft.block.ShapeContext
+import net.minecraft.block.*
+import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
+import net.minecraft.item.ItemStack
 import net.minecraft.screen.NamedScreenHandlerFactory
+import net.minecraft.state.StateManager
+import net.minecraft.state.property.Properties
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
 import net.minecraft.util.ItemScatterer
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
 import net.minecraft.util.shape.VoxelShape
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
@@ -19,8 +21,16 @@ import net.minecraft.world.World
 
 abstract class BaseChestBlock(settings: Settings?) : BlockWithEntity(settings) {
 
+    init {
+        defaultState = stateManager.defaultState.with(Properties.HORIZONTAL_FACING, Direction.NORTH)
+    }
+
     override fun getRenderType(state: BlockState?): BlockRenderType {
         return BlockRenderType.MODEL
+    }
+
+    override fun appendProperties(stateManager: StateManager.Builder<Block?, BlockState?>) {
+        stateManager.add(Properties.HORIZONTAL_FACING)
     }
 
     override fun getOutlineShape(
@@ -64,5 +74,26 @@ abstract class BaseChestBlock(settings: Settings?) : BlockWithEntity(settings) {
             }
             super.onStateReplaced(state, world, pos, newState, moved)
         }
+    }
+
+    override fun onPlaced(
+        world: World?,
+        pos: BlockPos?,
+        state: BlockState?,
+        placer: LivingEntity?,
+        itemStack: ItemStack?
+    ) {
+        super.onPlaced(world, pos, state, placer, itemStack)
+        world ?: return
+        placer ?: return
+        val facing = placer.horizontalFacing.opposite
+        setFacing(facing, world, pos)
+    }
+
+    open fun setFacing(facing: Direction, world: World, pos: BlockPos?) {
+        world.setBlockState(
+            pos,
+            world.getBlockState(pos).with(Properties.HORIZONTAL_FACING, facing)
+        )
     }
 }

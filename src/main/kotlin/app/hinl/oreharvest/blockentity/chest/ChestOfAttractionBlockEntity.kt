@@ -19,15 +19,14 @@ open class ChestOfAttractionBlockEntity(
     type: BlockEntityType<*>? = ModBlock.chestOfAttractionBlockEntity,
     pos: BlockPos?,
     state: BlockState?
-) :
-    BaseChestEntity(type, pos, state) {
+) : BaseChestEntity(type, pos, state) {
 
     val uuid = UUID.randomUUID()
 
     private val pickupDelay = 20
 
     override fun getDisplayName(): Text {
-        return Text.translatable("item.oreharvest.chest_attraction")
+        return Text.translatable("block.oreharvest.chest_attraction")
     }
 
     override fun tick(world: World?, pos: BlockPos?, state: BlockState?, blockEntity: BaseTickerBlockEntity?) {

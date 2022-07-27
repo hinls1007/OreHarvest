@@ -6,8 +6,8 @@
   "item.oreharvest.ring_natural": "Ring Of Natural",
   "item.oreharvest.ring_attraction": "Ring Of Attraction",
   "item.oreharvest.tool_hoe_natural": "Hoe Of Natural",
-  "item.oreharvest.chest_attraction": "Chest Of Attraction",
-  "item.oreharvest.chest_natural": "Chest Of Natural",
+  "block.oreharvest.chest_attraction": "Chest Of Attraction",
+  "block.oreharvest.chest_natural": "Chest Of Natural",
 
   "item.tooltip.ore_crops_seed.1": "Place the seed on the ore",
   "item.tooltip.ring_natural.1": "Growth crops in the fastest way",

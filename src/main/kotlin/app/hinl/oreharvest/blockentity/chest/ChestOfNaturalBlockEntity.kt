@@ -15,7 +15,7 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
     private var growthCounter = growthDelay
 
     override fun getDisplayName(): Text {
-        return Text.translatable("item.oreharvest.chest_natural")
+        return Text.translatable("block.oreharvest.chest_natural")
     }
 
     override fun tick(world: World?, pos: BlockPos?, state: BlockState?, blockEntity: BaseTickerBlockEntity?) {

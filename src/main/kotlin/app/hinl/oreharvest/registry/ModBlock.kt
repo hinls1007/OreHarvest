@@ -31,18 +31,20 @@ object ModBlock {
     )
 
     val chestOfAttractionBlock = ChestOfAttractionBlock(
-        FabricBlockSettings.of(Material.WOOD)
-            .ticksRandomly()
-            .sounds(BlockSoundGroup.WOOD)
+        FabricBlockSettings.of(Material.METAL)
+            .strength(4f)
+            .sounds(BlockSoundGroup.METAL)
+            .requiresTool()
     )
     val chestOfAttractionBlockItem = BlockItem(chestOfAttractionBlock, FabricItemSettings().group(OreHarvest.itemGroup))
     lateinit var chestOfAttractionBlockEntity: BlockEntityType<ChestOfAttractionBlockEntity>
 
 
     val chestOfNaturalBlock = ChestOfNaturalBlock(
-        FabricBlockSettings.of(Material.WOOD)
-            .ticksRandomly()
-            .sounds(BlockSoundGroup.WOOD)
+        FabricBlockSettings.of(Material.METAL)
+            .strength(4f)
+            .sounds(BlockSoundGroup.METAL)
+            .requiresTool()
     )
     val chestOfNaturalBlockItem = BlockItem(chestOfNaturalBlock, FabricItemSettings().group(OreHarvest.itemGroup))
     lateinit var chestOfNaturalBlockEntityType: BlockEntityType<ChestOfNaturalBlockEntity>
