@@ -12,7 +12,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.screen.NamedScreenHandlerFactory
 import net.minecraft.screen.ScreenHandler
-import net.minecraft.text.Text
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.util.math.BlockPos
 
@@ -20,15 +19,10 @@ import net.minecraft.util.math.BlockPos
 abstract class BaseChestEntity(type: BlockEntityType<*>?, pos: BlockPos?, state: BlockState?) :
     BaseTickerBlockEntity(type, pos, state), NamedScreenHandlerFactory, Inventory {
 
-    private val inventory = DefaultedList.ofSize(27, ItemStack.EMPTY)
+    private val inventory: DefaultedList<ItemStack> = DefaultedList.ofSize(6 * 9, ItemStack.EMPTY)
 
     override fun createMenu(syncId: Int, inv: PlayerInventory?, player: PlayerEntity?): ScreenHandler {
         return ChestScreenHandler(syncId = syncId, playerInventory = inv, this)
-    }
-
-    override fun getDisplayName(): Text {
-        //TODO
-        return Text.translatable("")
     }
 
     override fun clear() {

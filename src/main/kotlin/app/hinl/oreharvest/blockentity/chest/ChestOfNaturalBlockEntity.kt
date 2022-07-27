@@ -4,6 +4,7 @@ import app.hinl.oreharvest.blockentity.BaseTickerBlockEntity
 import app.hinl.oreharvest.registry.ModBlock
 import app.hinl.oreharvest.utils.BlockActionHelper
 import net.minecraft.block.BlockState
+import net.minecraft.text.Text
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
@@ -12,6 +13,11 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
 
     private val growthDelay = 20
     private var growthCounter = growthDelay
+
+    override fun getDisplayName(): Text {
+        return Text.translatable("item.oreharvest.chest_natural")
+    }
+
     override fun tick(world: World?, pos: BlockPos?, state: BlockState?, blockEntity: BaseTickerBlockEntity?) {
         world ?: return
         pos ?: return

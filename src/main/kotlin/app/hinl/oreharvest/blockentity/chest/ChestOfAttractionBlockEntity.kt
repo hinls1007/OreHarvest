@@ -7,6 +7,7 @@ import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.Entity
 import net.minecraft.entity.ItemEntity
 import net.minecraft.predicate.entity.EntityPredicates
+import net.minecraft.text.Text
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.MathHelper
@@ -24,6 +25,10 @@ open class ChestOfAttractionBlockEntity(
     val uuid = UUID.randomUUID()
 
     private val pickupDelay = 20
+
+    override fun getDisplayName(): Text {
+        return Text.translatable("item.oreharvest.chest_attraction")
+    }
 
     override fun tick(world: World?, pos: BlockPos?, state: BlockState?, blockEntity: BaseTickerBlockEntity?) {
         world ?: return

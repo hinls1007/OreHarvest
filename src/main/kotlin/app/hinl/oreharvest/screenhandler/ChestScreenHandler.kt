@@ -12,13 +12,14 @@ import net.minecraft.screen.slot.Slot
 class ChestScreenHandler(
     syncId: Int,
     playerInventory: PlayerInventory?,
-    val inventory: Inventory = SimpleInventory(27),
-    val rows: Int = 3
+    val inventory: Inventory = SimpleInventory(54),
+    val rows: Int = 6
 ) :
     ScreenHandler(ModScreen.chestScreenHandlerType, syncId) {
 
     init {
-        checkSize(inventory, 27)
+        val expectedSize = rows * 9
+        checkSize(inventory, expectedSize)
         inventory.onOpen(playerInventory?.player)
         val i: Int = (this.rows - 4) * 18
         for (j in 0 until rows) {
