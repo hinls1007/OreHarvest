@@ -6,11 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [Unreleased] - yyyy-mm-dd
+### Added
+### Changed
+### Fixed
 
 ## [Unreleased] - yyyy-mm-dd
 ### Added
 ### Changed
 ### Fixed
+- Fix Ore define
 
 ## [1.0.3] - 2022-07-28
 ### Added

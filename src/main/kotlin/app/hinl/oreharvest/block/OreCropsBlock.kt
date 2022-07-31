@@ -25,7 +25,9 @@ class OreCropsBlock(settings: Settings?) : CropBlock(settings) {
     )
 
     override fun canPlantOnTop(floor: BlockState?, world: BlockView?, pos: BlockPos?): Boolean {
-        return floor?.block is OreBlock || floor?.block is RedstoneOreBlock
+        return floor?.block is OreBlock
+                || floor?.block is RedstoneOreBlock
+                || floor?.registryEntry?.key?.get()?.value?.path?.contains("ore") == true
     }
 
     override fun canGrow(world: World?, random: Random?, pos: BlockPos?, state: BlockState?): Boolean {
