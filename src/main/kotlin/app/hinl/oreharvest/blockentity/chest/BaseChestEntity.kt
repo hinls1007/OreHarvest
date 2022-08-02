@@ -1,7 +1,9 @@
 package app.hinl.oreharvest.blockentity.chest
 
 import app.hinl.oreharvest.blockentity.BaseTickerBlockEntity
+import app.hinl.oreharvest.screenhandler.ButtonEntry
 import app.hinl.oreharvest.screenhandler.ChestScreenHandler
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.player.PlayerEntity
@@ -10,19 +12,35 @@ import net.minecraft.inventory.Inventories
 import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.screen.NamedScreenHandlerFactory
+import net.minecraft.network.PacketByteBuf
 import net.minecraft.screen.ScreenHandler
+import net.minecraft.screen.ScreenHandlerType
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.util.math.BlockPos
 
 
 abstract class BaseChestEntity(type: BlockEntityType<*>?, pos: BlockPos?, state: BlockState?) :
-    BaseTickerBlockEntity(type, pos, state), NamedScreenHandlerFactory, Inventory {
+    BaseTickerBlockEntity(type, pos, state), ExtendedScreenHandlerFactory, Inventory {
 
     private val inventory: DefaultedList<ItemStack> = DefaultedList.ofSize(6 * 9, ItemStack.EMPTY)
 
+    abstract fun getButtonEntries(): List<ButtonEntry>
+
+    abstract fun getScreenType(): ScreenHandlerType<*>
+
     override fun createMenu(syncId: Int, inv: PlayerInventory?, player: PlayerEntity?): ScreenHandler {
-        return ChestScreenHandler(syncId = syncId, playerInventory = inv, this)
+        return ChestScreenHandler(
+            type = getScreenType(),
+            syncId = syncId,
+            playerInventory = inv,
+            blockEntity = this,
+            buttonEntries = getButtonEntries()
+        )
+    }
+
+    override fun writeScreenOpeningData(player: ServerPlayerEntity?, buf: PacketByteBuf?) {
+        buf?.writeBlockPos(pos)
     }
 
     override fun clear() {

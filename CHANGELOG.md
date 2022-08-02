@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 ### Fixed
 
+## [Unreleased] - yyyy-mm-dd
+### Added
+- Disable button on the chest UI
+### Changed
+### Fixed
+
 ## [1.0.3] - 2022-07-28
 ### Added
 

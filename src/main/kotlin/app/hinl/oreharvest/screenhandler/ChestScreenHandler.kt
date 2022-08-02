@@ -1,30 +1,31 @@
 package app.hinl.oreharvest.screenhandler
 
-import app.hinl.oreharvest.registry.ModScreen
+import app.hinl.oreharvest.blockentity.chest.BaseChestEntity
+import app.hinl.oreharvest.utils.SyncPair
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.PlayerInventory
-import net.minecraft.inventory.Inventory
-import net.minecraft.inventory.SimpleInventory
 import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
+import net.minecraft.screen.ScreenHandlerType
 import net.minecraft.screen.slot.Slot
 
 class ChestScreenHandler(
+    type: ScreenHandlerType<*>?,
     syncId: Int,
     playerInventory: PlayerInventory?,
-    val inventory: Inventory = SimpleInventory(54),
+    val blockEntity: BaseChestEntity,
+    val buttonEntries: List<ButtonEntry>,
     val rows: Int = 6
-) :
-    ScreenHandler(ModScreen.chestScreenHandlerType, syncId) {
+) : ScreenHandler(type, syncId) {
 
     init {
         val expectedSize = rows * 9
-        checkSize(inventory, expectedSize)
-        inventory.onOpen(playerInventory?.player)
+        checkSize(blockEntity, expectedSize)
+        blockEntity.onOpen(playerInventory?.player)
         val i: Int = (this.rows - 4) * 18
         for (j in 0 until rows) {
             for (k in 0 until 9) {
-                this.addSlot(Slot(inventory, k + j * 9, 8 + k * 18, 18 + j * 18))
+                this.addSlot(Slot(blockEntity, k + j * 9, 8 + k * 18, 18 + j * 18))
             }
         }
         for (j in 0 until 3) {
@@ -36,6 +37,8 @@ class ChestScreenHandler(
             this.addSlot(Slot(playerInventory, j, 8 + j * 18, 161 + i))
         }
     }
+
+    private val syncListener = mutableMapOf<String, SyncPair>()
 
     override fun transferSlot(player: PlayerEntity?, index: Int): ItemStack {
         var itemStack = ItemStack.EMPTY
@@ -60,6 +63,6 @@ class ChestScreenHandler(
     }
 
     override fun canUse(player: PlayerEntity?): Boolean {
-        return inventory.canPlayerUse(player)
+        return blockEntity.canPlayerUse(player)
     }
 }
