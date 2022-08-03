@@ -71,7 +71,7 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
         world ?: return
         pos ?: return
         if (world.isClient) return
-        if (isActiveGrowth && growthCounter == 0) {
+        if (isActiveGrowth && growthCounter <= 0) {
             BlockActionHelper.applyGrowth(world = world, pos = pos, radius = 10)
             growthCounter = growthDelay
         } else {
