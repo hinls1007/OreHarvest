@@ -11,7 +11,7 @@ object ServerManager {
 
     val keyIsActiveAttraction = Identifier(Constants.ModID, "active_attraction")
     val keyIsActiveGrowth = Identifier(Constants.ModID, "active_growth")
-    val keyIsActiveBreak = Identifier(Constants.ModID, "active_break")
+    val keyIsActiveHarvest = Identifier(Constants.ModID, "active_harvest")
 
     fun setIsAttractionActive(blockPos: BlockPos, isActiveAttraction: Boolean) {
         sendPackageToServer(keyIsActiveAttraction) { buffer ->
@@ -27,10 +27,10 @@ object ServerManager {
         }
     }
 
-    fun setIsBreakActive(blockPos: BlockPos, isActiveBreak: Boolean) {
-        sendPackageToServer(keyIsActiveBreak) { buffer ->
+    fun setIsHarvestActive(blockPos: BlockPos, isActiveHarvest: Boolean) {
+        sendPackageToServer(keyIsActiveHarvest) { buffer ->
             buffer.writeBlockPos(blockPos)
-            buffer.writeBoolean(isActiveBreak)
+            buffer.writeBoolean(isActiveHarvest)
         }
     }
 

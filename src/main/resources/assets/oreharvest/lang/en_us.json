@@ -15,5 +15,9 @@
   "item.tooltip.ring_attraction": "Attract drops to your inventory",
   "item.tooltip.tool_hoe_natural.1": "Growth crops in the fastest way",
   "item.tooltip.tool_hoe_natural.2": "Activate in main hand",
-  "item.tooltip.tool_hoe_natural.3": "Harvest nearby crops when use"
+  "item.tooltip.tool_hoe_natural.3": "Harvest nearby crops when use",
+
+  "gui.tooltip.activate_attraction": "Activate attraction feature",
+  "gui.tooltip.activate_growth": "Activate growth crops feature",
+  "gui.tooltip.activate_harvest": "Activate harvesting crops feature"
 }

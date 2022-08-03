@@ -31,9 +31,9 @@ object BlockActionHelper {
                 && block !is WeepingVinesPlantBlock
             ) {
                 if (block.canGrow(world, world.random, blockPos, blockState)) {
-                    block.grow(world as? ServerWorld, world.random, blockPos, blockState)
                     when (block) {
                         is StemBlock -> {
+                            block.grow(world as? ServerWorld, world.random, blockPos, blockState)
                             if (blockState.get(StemBlock.AGE) >= StemBlock.MAX_AGE) {
                                 val direction = Direction.Type.HORIZONTAL.random(world.random)
                                 val targetBlockPos: BlockPos = blockPos.offset(direction)
@@ -54,8 +54,13 @@ object BlockActionHelper {
                                 }
                             }
                         }
+                        is CocoaBlock -> {
+                            if (blockState.get(CocoaBlock.AGE) < CocoaBlock.MAX_AGE) {
+                                block.grow(world as? ServerWorld, world.random, blockPos, blockState)
+                            }
+                        }
                         else -> {
-
+                            block.grow(world as? ServerWorld, world.random, blockPos, blockState)
                         }
                     }
                 }
@@ -71,6 +76,7 @@ object BlockActionHelper {
 
             when {
                 block is Fertilizable
+                        && block !is SaplingBlock
                         && block !is CaveVinesBodyBlock
                         && block !is CaveVinesHeadBlock
                         && block !is FernBlock

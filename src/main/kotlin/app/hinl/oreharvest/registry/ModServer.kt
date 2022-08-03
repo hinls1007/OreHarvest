@@ -48,18 +48,18 @@ object ModServer {
             }
         }
 
-        ServerPlayNetworking.registerGlobalReceiver(ServerManager.keyIsActiveBreak) { minecraftServer: MinecraftServer,
-                                                                                      serverPlayerEntity: ServerPlayerEntity,
-                                                                                      serverPlayNetworkHandler: ServerPlayNetworkHandler,
-                                                                                      packetByteBuf: PacketByteBuf,
-                                                                                      packetSender: PacketSender ->
+        ServerPlayNetworking.registerGlobalReceiver(ServerManager.keyIsActiveHarvest) { minecraftServer: MinecraftServer,
+                                                                                        serverPlayerEntity: ServerPlayerEntity,
+                                                                                        serverPlayNetworkHandler: ServerPlayNetworkHandler,
+                                                                                        packetByteBuf: PacketByteBuf,
+                                                                                        packetSender: PacketSender ->
 
             val blockPos: BlockPos = packetByteBuf.readBlockPos()
-            val isActiveBreak: Boolean = packetByteBuf.readBoolean()
+            val isActiveHarvest: Boolean = packetByteBuf.readBoolean()
 
             minecraftServer.execute {
                 val blockEntity: BlockEntity = serverPlayerEntity.world.getBlockEntity(blockPos) ?: return@execute
-                (blockEntity as? ChestOfNaturalBlockEntity)?.isActiveBreak = isActiveBreak
+                (blockEntity as? ChestOfNaturalBlockEntity)?.isActiveHarvest = isActiveHarvest
             }
         }
     }

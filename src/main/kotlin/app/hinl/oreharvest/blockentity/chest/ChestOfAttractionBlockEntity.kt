@@ -56,7 +56,8 @@ open class ChestOfAttractionBlockEntity(
         buttonEntries.add(
             ButtonEntry(
                 isChecked = isActiveAttraction,
-                buttonText = MutableText.of(LiteralTextContent("Attraction"))
+                buttonText = MutableText.of(LiteralTextContent("A")),
+                buttonToolTips = Text.translatable("gui.tooltip.activate_attraction")
             ) {
                 ServerManager.setIsAttractionActive(blockPos = pos, isActiveAttraction = it)
                 isActiveAttraction = it

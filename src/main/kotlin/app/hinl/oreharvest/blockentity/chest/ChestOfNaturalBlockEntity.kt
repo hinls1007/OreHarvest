@@ -26,7 +26,7 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
             field = value
             markDirty()
         }
-    var isActiveBreak = true
+    var isActiveHarvest = true
         set(value) {
             field = value
             markDirty()
@@ -49,7 +49,8 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
         buttonEntry.add(
             ButtonEntry(
                 isChecked = isActiveGrowth,
-                buttonText = MutableText.of(LiteralTextContent("Growth"))
+                buttonText = MutableText.of(LiteralTextContent("G")),
+                buttonToolTips = Text.translatable("gui.tooltip.activate_growth")
             ) {
                 ServerManager.setIsGrowthActive(blockPos = pos, isActiveGrowth = it)
                 isActiveGrowth = it
@@ -57,11 +58,12 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
         )
         buttonEntry.add(
             ButtonEntry(
-                isChecked = isActiveBreak,
-                buttonText = MutableText.of(LiteralTextContent("Break Crops"))
+                isChecked = isActiveHarvest,
+                buttonText = MutableText.of(LiteralTextContent("H")),
+                buttonToolTips = Text.translatable("gui.tooltip.activate_harvest")
             ) {
-                ServerManager.setIsBreakActive(blockPos = pos, isActiveBreak = it)
-                isActiveBreak = it
+                ServerManager.setIsHarvestActive(blockPos = pos, isActiveHarvest = it)
+                isActiveHarvest = it
             }
         )
         return buttonEntry
@@ -77,7 +79,7 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
         } else {
             growthCounter--
         }
-        if (isActiveBreak && !isFull()) {
+        if (isActiveHarvest && !isFull()) {
             BlockActionHelper.applyBreakCrops(world = world, pos = pos, radius = 10)
         }
         super.tick(world, pos, state, blockEntity)
@@ -86,12 +88,12 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
     override fun readNbt(nbt: NbtCompound?) {
         super.readNbt(nbt)
         isActiveGrowth = nbt?.getBoolean(keyIsActiveGrowth) ?: true
-        isActiveBreak = nbt?.getBoolean(keyIsActiveBreak) ?: true
+        isActiveHarvest = nbt?.getBoolean(keyIsActiveBreak) ?: true
     }
 
     override fun writeNbt(nbt: NbtCompound?) {
         nbt?.putBoolean(keyIsActiveGrowth, isActiveGrowth)
-        nbt?.putBoolean(keyIsActiveBreak, isActiveBreak)
+        nbt?.putBoolean(keyIsActiveBreak, isActiveHarvest)
         super.writeNbt(nbt)
     }
 }
