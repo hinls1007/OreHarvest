@@ -3,6 +3,7 @@ package app.hinl.oreharvest
 import app.hinl.oreharvest.registry.ModBlock
 import app.hinl.oreharvest.registry.ModItems
 import app.hinl.oreharvest.registry.ModScreen
+import app.hinl.oreharvest.registry.ModServer
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.minecraft.block.Blocks
@@ -22,5 +23,6 @@ object OreHarvest : ModInitializer {
         ModBlock.register()
         ModItems.register()
         ModScreen.register()
+        ModServer.register()
     }
 }
