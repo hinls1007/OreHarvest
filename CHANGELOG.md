@@ -14,6 +14,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] - yyyy-mm-dd
 ### Added
+### Changed
+### Fixed
+- Fix Bamboo, Chorus Flower, Sugar Cane harvest mechanism 
+
+## [1.0.4] - yyyy-mm-dd
+### Added
 - Disable button on the chest UI
 ### Changed
 ### Fixed
