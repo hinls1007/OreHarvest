@@ -35,25 +35,7 @@ object BlockActionHelper {
                         when (block) {
                             is StemBlock -> {
                                 block.grow(world as? ServerWorld, world.random, blockPos, blockState)
-                                if (blockState.get(StemBlock.AGE) >= StemBlock.MAX_AGE) {
-                                    val direction = Direction.Type.HORIZONTAL.random(world.random)
-                                    val targetBlockPos: BlockPos = blockPos.offset(direction)
-                                    val targetBlockState = world.getBlockState(targetBlockPos.down())
-                                    if (world.getBlockState(targetBlockPos).isAir && (targetBlockState.isOf(Blocks.FARMLAND) || targetBlockState.isIn(
-                                            BlockTags.DIRT
-                                        ))
-                                    ) {
-                                        world.setBlockState(targetBlockPos, block.gourdBlock.defaultState)
-                                        world.setBlockState(
-                                            blockPos,
-                                            block.gourdBlock.attachedStem.defaultState
-                                                .with(
-                                                    HorizontalFacingBlock.FACING,
-                                                    direction
-                                                ) as BlockState
-                                        )
-                                    }
-                                }
+
                             }
                             is BambooBlock -> {
                                 val floorBlock = world.getBlockState(blockPos.down()).block
@@ -63,6 +45,28 @@ object BlockActionHelper {
                             }
                             else -> {
                                 block.grow(world as? ServerWorld, world.random, blockPos, blockState)
+                            }
+                        }
+                    } else {
+                        if (block is StemBlock) {
+                            if (blockState.get(StemBlock.AGE) >= StemBlock.MAX_AGE) {
+                                val direction = Direction.Type.HORIZONTAL.random(world.random)
+                                val targetBlockPos: BlockPos = blockPos.offset(direction)
+                                val targetBlockState = world.getBlockState(targetBlockPos.down())
+                                if (world.getBlockState(targetBlockPos).isAir && (targetBlockState.isOf(Blocks.FARMLAND) || targetBlockState.isIn(
+                                        BlockTags.DIRT
+                                    ))
+                                ) {
+                                    world.setBlockState(targetBlockPos, block.gourdBlock.defaultState)
+                                    world.setBlockState(
+                                        blockPos,
+                                        block.gourdBlock.attachedStem.defaultState
+                                            .with(
+                                                HorizontalFacingBlock.FACING,
+                                                direction
+                                            ) as BlockState
+                                    )
+                                }
                             }
                         }
                     }
@@ -160,7 +164,7 @@ object BlockActionHelper {
                 }
                 block is ChorusPlantBlock -> {
                     val floor = world.getBlockState(blockPos.down())
-                    if (floor.block == Blocks.END_STONE){
+                    if (floor.block == Blocks.END_STONE) {
                         var foundMatureFlower = false
                         BlockPos.iterateOutwards(pos, 5, 50, 5).forEach { chorusPos ->
                             val chorusBlockState = world.getBlockState(chorusPos)
