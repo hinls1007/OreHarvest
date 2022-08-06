@@ -3,6 +3,7 @@ package app.hinl.oreharvest.utils
 import net.minecraft.block.*
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.ItemEntity
+import net.minecraft.entity.passive.*
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.predicate.entity.EntityPredicates
 import net.minecraft.server.world.ServerWorld
@@ -12,6 +13,7 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.Direction
 import net.minecraft.world.World
+import kotlin.math.absoluteValue
 
 object BlockActionHelper {
     fun applyGrowth(world: World, pos: BlockPos, radius: Int, height: Int) {
@@ -187,6 +189,27 @@ object BlockActionHelper {
                         if (foundMatureFlower) {
                             world.setBlockState(blockPos, Blocks.CHORUS_FLOWER.defaultState)
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    fun applyGrowPassiveEntity(world: World, player: PlayerEntity, radius: Int) {
+        val passiveEntity = world.getEntitiesByClass(
+            PassiveEntity::class.java,
+            player.boundingBox.expand(radius.toDouble()),
+            EntityPredicates.VALID_ENTITY
+        )
+        for (entityNearby in passiveEntity) {
+            when (entityNearby) {
+                is CowEntity,
+                is SheepEntity,
+                is PigEntity,
+                is ChickenEntity,
+                is BeeEntity -> {
+                    if (entityNearby.isBaby) {
+                        entityNearby.growUp(entityNearby.breedingAge.absoluteValue)
                     }
                 }
             }

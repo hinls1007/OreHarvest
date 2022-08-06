@@ -80,7 +80,8 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
             BlockActionHelper.applyGrowth(
                 world = world, pos = pos,
                 radius = rangeRadius,
-                height = rangeHeight)
+                height = rangeHeight
+            )
             growthCounter = growthDelay
         } else {
             growthCounter--
@@ -89,7 +90,8 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
             BlockActionHelper.applyBreakCrops(
                 world = world, pos = pos,
                 radius = rangeRadius,
-                height = rangeHeight)
+                height = rangeHeight
+            )
         }
         super.tick(world, pos, state, blockEntity)
     }
