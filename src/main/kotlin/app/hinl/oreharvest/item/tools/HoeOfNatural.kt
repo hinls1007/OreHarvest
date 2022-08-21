@@ -14,6 +14,10 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 class HoeOfNatural(settings: Settings?) : Item(settings) {
+
+    private var rangeRadius = 10
+    private var rangeHeight = 10
+
     override fun appendTooltip(
         stack: ItemStack?,
         world: World?,
@@ -37,7 +41,8 @@ class HoeOfNatural(settings: Settings?) : Item(settings) {
                 BlockActionHelper.applyGrowth(
                     world = world,
                     pos = BlockPos(entity.pos),
-                    10
+                    radius = rangeRadius,
+                    height = rangeHeight
                 )
             }
         }
@@ -47,7 +52,11 @@ class HoeOfNatural(settings: Settings?) : Item(settings) {
         user ?: return TypedActionResult.pass(null)
         val itemStack: ItemStack = user.getStackInHand(hand)
         world ?: return TypedActionResult.pass(itemStack)
-        BlockActionHelper.applyBreakCrops(world = world, pos = BlockPos(user.pos), 10)
+        BlockActionHelper.applyBreakCrops(
+            world = world, pos = BlockPos(user.pos),
+            radius = rangeRadius,
+            height = rangeHeight
+        )
         return TypedActionResult.success(itemStack, true)
     }
 }

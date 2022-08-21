@@ -12,6 +12,10 @@ import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
 class RingOfNatural(settings: Settings?) : Item(settings) {
+
+    private var rangeRadius = 10
+    private var rangeHeight = 10
+
     override fun appendTooltip(
         stack: ItemStack?,
         world: World?,
@@ -35,7 +39,8 @@ class RingOfNatural(settings: Settings?) : Item(settings) {
                 BlockActionHelper.applyGrowth(
                     world = world,
                     pos = BlockPos(entity.pos),
-                    10
+                    radius = rangeRadius,
+                    height = rangeHeight
                 )
             }
         }

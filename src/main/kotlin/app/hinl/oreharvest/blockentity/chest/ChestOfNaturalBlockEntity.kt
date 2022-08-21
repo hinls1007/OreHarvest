@@ -18,6 +18,9 @@ import net.minecraft.world.World
 class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
     ChestOfAttractionBlockEntity(type = ModBlock.chestOfNaturalBlockEntityType, pos = pos, state = state) {
 
+    private var rangeRadius = 10
+    private var rangeHeight = 10
+
     private val keyIsActiveGrowth = "isActiveGrowth"
     private val keyIsActiveBreak = "isActiveBreak"
 
@@ -74,13 +77,19 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
         pos ?: return
         if (world.isClient) return
         if (isActiveGrowth && growthCounter <= 0) {
-            BlockActionHelper.applyGrowth(world = world, pos = pos, radius = 10)
+            BlockActionHelper.applyGrowth(
+                world = world, pos = pos,
+                radius = rangeRadius,
+                height = rangeHeight)
             growthCounter = growthDelay
         } else {
             growthCounter--
         }
         if (isActiveHarvest && !isFull()) {
-            BlockActionHelper.applyBreakCrops(world = world, pos = pos, radius = 10)
+            BlockActionHelper.applyBreakCrops(
+                world = world, pos = pos,
+                radius = rangeRadius,
+                height = rangeHeight)
         }
         super.tick(world, pos, state, blockEntity)
     }
