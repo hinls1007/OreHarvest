@@ -34,7 +34,8 @@ class RingOfNatural(settings: Settings?) : Item(settings) {
         }
 
         val equippedMain = entity.mainHandStack
-        if (stack == equippedMain) {
+        val equippedOffHand = entity.offHandStack
+        if (stack == equippedMain || stack == equippedOffHand) {
             if (entity.age % 20 == 0) {
                 BlockActionHelper.applyGrowth(
                     world = world,

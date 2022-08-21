@@ -10,7 +10,10 @@ import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 import net.minecraft.world.World
 
-class RingOfAttraction(settings: Settings?) : Item(settings) {
+class RingOfGrowth(settings: Settings?) : Item(settings) {
+
+    private var rangeRadius = 10
+
     override fun appendTooltip(
         stack: ItemStack?,
         world: World?,
@@ -18,13 +21,25 @@ class RingOfAttraction(settings: Settings?) : Item(settings) {
         context: TooltipContext?
     ) {
         tooltip?.apply {
-            add(Text.translatable("item.tooltip.ring_growth").formatted(Formatting.DARK_GREEN))
+            add(Text.translatable("item.tooltip.ring_attraction").formatted(Formatting.DARK_GREEN))
         }
     }
 
     override fun inventoryTick(stack: ItemStack?, world: World?, entity: Entity?, slot: Int, selected: Boolean) {
-        if (entity !is PlayerEntity) return
-        world ?: return
-        BlockActionHelper.applyAttractItem(world = world, player = entity, 20)
+        if (entity !is PlayerEntity || world?.isClient != false) {
+            return
+        }
+
+        val equippedMain = entity.mainHandStack
+        val equippedOffHand = entity.offHandStack
+        if (stack == equippedMain || stack == equippedOffHand) {
+            if (entity.age % 20 == 0) {
+                BlockActionHelper.applyGrowPassiveEntity(
+                    world = world,
+                    player = entity,
+                    radius = rangeRadius,
+                )
+            }
+        }
     }
 }

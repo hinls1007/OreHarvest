@@ -10,9 +10,17 @@ This is a minecraft mod that allow you growth ore crops by placing ore crops see
   * Attract item drops to player inventory
 * Ring Of Natural
   * Growth crop in a fast way
+* Ring Of Growth
+  * Growth Cow, Sheep, Pig, Chicken, Bee instantly and reset breeding cool down
 * Hoe Of Natural
   * Growth crop in a fast way
   * Harvest all kind of crops by right click
+* Chest Of Attraction
+  * Attract nearby items to chest and store them into it
+* Chest Of Natural
+  * Growth, harvest nearby crops
+  * Attract nearby items to chest and store them into it
+
 
 # Issues and Suggestions
 
