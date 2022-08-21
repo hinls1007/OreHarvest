@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 ### Fixed
 
-## [Unreleased] - yyyy-mm-dd
+## [1.0.5] - 2022-08-22
 ### Added
 - Ring Of Growth
 ### Changed
