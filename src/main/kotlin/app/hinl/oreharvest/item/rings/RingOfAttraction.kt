@@ -18,7 +18,7 @@ class RingOfAttraction(settings: Settings?) : Item(settings) {
         context: TooltipContext?
     ) {
         tooltip?.apply {
-            add(Text.translatable("item.tooltip.ring_attraction").formatted(Formatting.DARK_GREEN))
+            add(Text.translatable("item.tooltip.ring_growth").formatted(Formatting.DARK_GREEN))
         }
     }
 

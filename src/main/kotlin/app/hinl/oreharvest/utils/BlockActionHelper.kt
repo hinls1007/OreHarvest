@@ -210,6 +210,8 @@ object BlockActionHelper {
                 is BeeEntity -> {
                     if (entityNearby.isBaby) {
                         entityNearby.growUp(entityNearby.breedingAge.absoluteValue)
+                    } else {
+                        entityNearby.breedingAge = 0
                     }
                 }
             }
