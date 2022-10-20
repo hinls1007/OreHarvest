@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.text.Text
+import net.minecraft.text.TranslatableText
 import net.minecraft.util.Formatting
 import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
@@ -25,9 +26,9 @@ class HoeOfNatural(settings: Settings?) : Item(settings) {
         context: TooltipContext?
     ) {
         tooltip?.apply {
-            add(Text.translatable("item.tooltip.tool_hoe_natural.1").formatted(Formatting.DARK_GREEN))
-            add(Text.translatable("item.tooltip.tool_hoe_natural.2").formatted(Formatting.DARK_BLUE))
-            add(Text.translatable("item.tooltip.tool_hoe_natural.3").formatted(Formatting.DARK_BLUE))
+            add(TranslatableText("item.tooltip.tool_hoe_natural.1").formatted(Formatting.DARK_GREEN))
+            add(TranslatableText("item.tooltip.tool_hoe_natural.2").formatted(Formatting.DARK_BLUE))
+            add(TranslatableText("item.tooltip.tool_hoe_natural.3").formatted(Formatting.DARK_BLUE))
         }
     }
 

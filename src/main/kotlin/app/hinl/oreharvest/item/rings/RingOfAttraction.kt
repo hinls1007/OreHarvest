@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.text.Text
+import net.minecraft.text.TranslatableText
 import net.minecraft.util.Formatting
 import net.minecraft.world.World
 
@@ -18,7 +19,7 @@ class RingOfAttraction(settings: Settings?) : Item(settings) {
         context: TooltipContext?
     ) {
         tooltip?.apply {
-            add(Text.translatable("item.tooltip.ring_growth").formatted(Formatting.DARK_GREEN))
+            add(TranslatableText("item.tooltip.ring_growth").formatted(Formatting.DARK_GREEN))
         }
     }
 

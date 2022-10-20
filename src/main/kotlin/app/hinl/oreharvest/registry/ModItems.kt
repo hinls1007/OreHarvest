@@ -13,6 +13,7 @@ import net.minecraft.item.AliasedBlockItem
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.text.Text
+import net.minecraft.text.TranslatableText
 import net.minecraft.util.Formatting
 import net.minecraft.util.Identifier
 import net.minecraft.util.Rarity
@@ -31,7 +32,7 @@ object ModItems {
             tooltip: MutableList<Text>?,
             context: TooltipContext?
         ) {
-            tooltip?.add(Text.translatable("item.tooltip.ore_crops_seed.1").formatted(Formatting.DARK_GREEN))
+            tooltip?.add(TranslatableText("item.tooltip.ore_crops_seed.1").formatted(Formatting.DARK_GREEN))
         }
     }
 

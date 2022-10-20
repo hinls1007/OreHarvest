@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.text.Text
+import net.minecraft.text.TranslatableText
 import net.minecraft.util.Formatting
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
@@ -23,8 +24,8 @@ class RingOfNatural(settings: Settings?) : Item(settings) {
         context: TooltipContext?
     ) {
         tooltip?.apply {
-            add(Text.translatable("item.tooltip.ring_natural.1").formatted(Formatting.DARK_GREEN))
-            add(Text.translatable("item.tooltip.ring_natural.2").formatted(Formatting.DARK_BLUE))
+            add(TranslatableText("item.tooltip.ring_natural.1").formatted(Formatting.DARK_GREEN))
+            add(TranslatableText("item.tooltip.ring_natural.2").formatted(Formatting.DARK_BLUE))
         }
     }
 

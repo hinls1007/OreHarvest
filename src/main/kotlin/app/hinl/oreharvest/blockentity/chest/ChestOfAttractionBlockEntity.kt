@@ -15,13 +15,13 @@ import net.minecraft.network.listener.ClientPlayPacketListener
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket
 import net.minecraft.predicate.entity.EntityPredicates
 import net.minecraft.screen.ScreenHandlerType
-import net.minecraft.text.LiteralTextContent
+import net.minecraft.text.LiteralText
 import net.minecraft.text.MutableText
 import net.minecraft.text.Text
+import net.minecraft.text.TranslatableText
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.MathHelper
-import net.minecraft.util.math.random.Random
 import net.minecraft.world.World
 import java.util.*
 
@@ -48,7 +48,7 @@ open class ChestOfAttractionBlockEntity(
     }
 
     override fun getDisplayName(): Text {
-        return Text.translatable("block.oreharvest.chest_attraction")
+        return TranslatableText("block.oreharvest.chest_attraction")
     }
 
     override fun getButtonEntries(): List<ButtonEntry> {
@@ -56,8 +56,8 @@ open class ChestOfAttractionBlockEntity(
         buttonEntries.add(
             ButtonEntry(
                 isChecked = isActiveAttraction,
-                buttonText = MutableText.of(LiteralTextContent("A")),
-                buttonToolTips = Text.translatable("gui.tooltip.activate_attraction")
+                buttonText = LiteralText("A"),
+                buttonToolTips = TranslatableText("gui.tooltip.activate_attraction")
             ) {
                 ServerManager.setIsAttractionActive(blockPos = pos, isActiveAttraction = it)
                 isActiveAttraction = it
@@ -96,7 +96,7 @@ open class ChestOfAttractionBlockEntity(
     }
 
     private fun dropItem(itemEntity: ItemEntity) {
-        val random = Random.create()
+        val random = Random()
         val f = random.nextFloat() * 0.5f
         val g = random.nextFloat() * 6f
         itemEntity.setVelocity(

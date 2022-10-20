@@ -9,9 +9,10 @@ import app.hinl.oreharvest.utils.ServerManager
 import net.minecraft.block.BlockState
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.screen.ScreenHandlerType
-import net.minecraft.text.LiteralTextContent
+import net.minecraft.text.LiteralText
 import net.minecraft.text.MutableText
 import net.minecraft.text.Text
+import net.minecraft.text.TranslatableText
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 
@@ -43,7 +44,7 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
     }
 
     override fun getDisplayName(): Text {
-        return Text.translatable("block.oreharvest.chest_natural")
+        return TranslatableText("block.oreharvest.chest_natural")
     }
 
     override fun getButtonEntries(): List<ButtonEntry> {
@@ -52,8 +53,8 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
         buttonEntry.add(
             ButtonEntry(
                 isChecked = isActiveGrowth,
-                buttonText = MutableText.of(LiteralTextContent("G")),
-                buttonToolTips = Text.translatable("gui.tooltip.activate_growth")
+                buttonText = LiteralText("G"),
+                buttonToolTips = TranslatableText("gui.tooltip.activate_growth")
             ) {
                 ServerManager.setIsGrowthActive(blockPos = pos, isActiveGrowth = it)
                 isActiveGrowth = it
@@ -62,8 +63,8 @@ class ChestOfNaturalBlockEntity(pos: BlockPos?, state: BlockState?) :
         buttonEntry.add(
             ButtonEntry(
                 isChecked = isActiveHarvest,
-                buttonText = MutableText.of(LiteralTextContent("H")),
-                buttonToolTips = Text.translatable("gui.tooltip.activate_harvest")
+                buttonText = LiteralText("H"),
+                buttonToolTips = TranslatableText("gui.tooltip.activate_harvest")
             ) {
                 ServerManager.setIsHarvestActive(blockPos = pos, isActiveHarvest = it)
                 isActiveHarvest = it

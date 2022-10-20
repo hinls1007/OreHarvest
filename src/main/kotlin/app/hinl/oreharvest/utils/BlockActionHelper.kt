@@ -24,7 +24,6 @@ object BlockActionHelper {
                 block is Fertilizable
                         && block !is FernBlock
                         && block !is GrassBlock
-                        && block !is MangroveLeavesBlock
                         && block !is MossBlock
                         && block !is NyliumBlock
                         && block !is RootedDirtBlock
@@ -106,7 +105,6 @@ object BlockActionHelper {
                         && block !is BambooSaplingBlock
                         && block !is FernBlock
                         && block !is GrassBlock
-                        && block !is MangroveLeavesBlock
                         && block !is MossBlock
                         && block !is NyliumBlock
                         && block !is RootedDirtBlock

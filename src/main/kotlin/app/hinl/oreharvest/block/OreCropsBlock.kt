@@ -6,10 +6,10 @@ import net.minecraft.item.ItemConvertible
 import net.minecraft.item.ItemStack
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.random.Random
 import net.minecraft.util.shape.VoxelShape
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
+import java.util.*
 
 class OreCropsBlock(settings: Settings?) : CropBlock(settings) {
 
@@ -38,8 +38,7 @@ class OreCropsBlock(settings: Settings?) : CropBlock(settings) {
         state: BlockState?,
         world: ServerWorld?,
         pos: BlockPos?,
-        stack: ItemStack?,
-        dropExperience: Boolean
+        stack: ItemStack?
     ) {
         val currentAge = state?.get(AGE) ?: 0
         if (currentAge == maxAge) {
@@ -50,7 +49,7 @@ class OreCropsBlock(settings: Settings?) : CropBlock(settings) {
         } else {
             Block.dropStack(world, pos, ItemStack(ModItems.oreCropsSeed))
         }
-        super.onStacksDropped(state, world, pos, stack, dropExperience)
+        super.onStacksDropped(state, world, pos, stack)
     }
 
     override fun getSeedsItem(): ItemConvertible {
